@@ -27,27 +27,21 @@ const favorite = new FavoritesWidget();
 moneyOperations.addMoneyCallback = data => ApiConnector.addMoney(data, (response) => {
   if (response.success) {
     ProfileWidget.showProfile(response.data);
-    favorite.setMessage(response.success, `Перевод состоялся`);
-  } else {
-    favorite.setMessage(response.success, response.error);
+    favorite.setMessage(response.success, response.success ? `Перевод состоялся` : response.error);
   }
 });
 
 moneyOperations.conversionMoneyCallback = data => ApiConnector.convertMoney(data, (response) => {
   if (response.success) {
     ProfileWidget.showProfile(response.data);
-    favorite.setMessage(response.success, 'Конвертация состоялась');
-  } else {
-    favorite.setMessage(response.success, response.error);
+    favorite.setMessage(response.success, response.success ? 'Конвертация состоялась' : response.error);
   }
 });
 
 moneyOperations.sendMoneyCallback = data => ApiConnector.transferMoney(data, (response) => {
   if (response.success) {
     ProfileWidget.showProfile(response.data);
-    favorite.setMessage(response.success, 'Перевод состоялся');
-  } else {
-    favorite.setMessage(response.success, response.error);
+    favorite.setMessage(response.success, response.success ? 'Перевод состоялся': response.error);
   }
 });
 
